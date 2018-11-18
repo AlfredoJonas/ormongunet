@@ -1,0 +1,22 @@
+{
+  "name": "ormongunet",
+  "version": "1.0.0",
+  "description": "Servidor que contiene una base de datos echa con un ORM para el servicio de una pagina web simple",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfredoJonas/ormongunet.git"
+  },
+  "author": "UNET",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlfredoJonas/ormongunet/issues"
+  },
+  "homepage": "https://github.com/AlfredoJonas/ormongunet#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
