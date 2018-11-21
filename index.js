@@ -1,17 +1,27 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
+var express = require('express'),
+  app = express(),
+  port = process.env.PORT || 3000,
+  mongoose = require('mongoose'),
+  Task = require('./api/models/ORMongunetModel'), //created model loading here
+  bodyParser = require('body-parser');
+  
+// mongoose instance connection url connection
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/fit4'); 
 
-//car_shop es el nombre de la base de datos
-mongoose.connect(
-	'mongodb://localhost/car_shop',
-	(err, res) => {
-		if (err) throw err;
 
-		console.log('Conexión a la Base de datos Establecida');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-		app.listen(3000, () => {
-			console.log('API REST corriendo en http://localhost:3000');
-		});
-	}
-);
+
+var routes = require('./api/routes/ORMongunetRoutes'); //importing route
+routes(app); //register the route
+
+
+app.listen(port);
+
+app.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' No econtrada'})
+});
+
+console.log('todo list RESTful API server started on: ' + port);
