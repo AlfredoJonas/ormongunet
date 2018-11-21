@@ -1,10 +1,17 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+//car_shop es el nombre de la base de datos
+mongoose.connect(
+	'mongodb://localhost/car_shop',
+	(err, res) => {
+		if (err) throw err;
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+		console.log('Conexión a la Base de datos Establecida');
+
+		app.listen(3000, () => {
+			console.log('API REST corriendo en http://localhost:3000');
+		});
+	}
+);
